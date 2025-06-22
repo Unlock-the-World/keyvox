@@ -85,6 +85,10 @@ cp .env.example .env
 - `helper-gas/code.js`：Google Apps Script（GAS）でのKEYVOX API呼び出し用
 - `helper-node/keyvoxHelper.js`：Node.jsでのHMAC署名付きAPIアクセス用
 
+```アプリ側で読み込んで使用：
+const helper = require('./keyvoxHelper');
+await helper.unlockLock('your_lock_id');
+```
 ---
 
 ## オフィシャルリソース
