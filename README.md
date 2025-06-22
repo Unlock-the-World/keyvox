@@ -80,6 +80,11 @@ LOCK_ID=your_lock_id_here
 🔍 補足：.env.example をコピーして .env を作成する場合は以下のコマンドを実行してください
 cp .env.example .env
 
+### 📁 共通ライブラリ（ヘルパー）
+
+- `helper-gas/code.js`：Google Apps Script（GAS）でのKEYVOX API呼び出し用
+- `helper-node/keyvoxHelper.js`：Node.jsでのHMAC署名付きAPIアクセス用
+
 ---
 
 ## オフィシャルリソース
