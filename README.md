@@ -9,12 +9,13 @@
 
 ## 📋 Table of Contents
 - [概要](#概要)
-- [対応環境](#対応環境)
+- [KEYVOXとは](#KEYVOXとは)
+- [このリポジトリでできること](#このリポジトリでできること)
 - [セットアップ](#セットアップ)
-- [クイックスタート](#クイックスタート)
-- [リソース](#リソース)
-- [Contributing](#contributing)
-- [License](#license)
+- [利用方法](#利用方法)
+- [オフィシャルリソース](#オフィシャルリソース)
+- [コントリビューション](#コントリビューション)
+- [ライセンス](#license)
 
 ## 概要
 KEYVOX は QRコードによるスマートロックアクセス制御を提供する強力なプラットフォームです。
@@ -58,18 +59,19 @@ QRコードでスマートにアクセス。鍵のUXを極限まで高めたス�
 - `storeKeys()` を1度実行し、APIキー・ロックIDなどを保存
 - Webhook受信用のエンドポイントとして GAS を公開
 - 通知や解錠コマンドを柔軟に制御可能
-
 ➡ GASプロジェクト作成後、`Code.gs` にスクリプトをコピーしてください
 
 ---
 
 ### 🔧 B. Replit / Railway / Vercel（Node.js）
 
-1. `.env` ファイルを作成し、以下を定義：
-```env
+1. `.env` ファイルを作成し、以下を定義します：
+
+```env.
 KEYVOX_API_KEY=your_api_key_here
 KEYVOX_SECRET=your_secret_key_here
 LOCK_ID=your_lock_id_here
+```
 
 2. `npm install` で依存をインストール  
 3. `node index.js` または `vercel dev`, `railway run` で起動  
