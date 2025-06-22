@@ -97,5 +97,5 @@ LOCK_ID=your_lock_id_here
 
 ## ライセンス
 
-MITライセンスで公開されています。詳細は `LICENSE` を参照してください。
+MITライセンスで公開されています。詳細は `LICENSE.jp.md` を参照してください。
 
