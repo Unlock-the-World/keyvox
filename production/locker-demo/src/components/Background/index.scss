@@ -1,0 +1,90 @@
+.container {
+  position: relative;
+  //width: 720px;
+  //height: 900px;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  // background-color: white;
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  //padding: 10px;
+  margin-top:8rem;
+  width: 70%;
+  border: 2px dashed rgba(255,255,255,0.2);
+  height: 12rem;
+  margin-left: -10px;
+  justify-content: right;
+  text-align: right;
+  //border-top: 2px dashed rgba(255,255,255,0.2);
+  //border-right: 2px dashed rgba(255,255,255,0.2);
+  //border-bottom: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 10px;
+  // margin-left: 25%;
+  .bcktext {
+    display: flex;
+    // justify-content: center;
+    margin-left: 8px;
+    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.top-right-circle{
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  right: 0;
+  top: -35rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20rem;
+}
+
+.center-right-circle{
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  right: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20rem;
+}
+
+.bottom-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 14rem;
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-spacing: 50px;
+  border-radius: 10px;
+  margin-top: -20px;
+}
+
+.bckSection {
+  display: flex;
+   justify-content: center;
+  padding-top: 30px;
+
+  .logo {
+     width: 12rem;
+    //height: 70px;
+  }
+
+  .text {
+    margin-left: 8px;
+    font-size: 70px;
+    color: white;
+    margin-bottom:10px;
+  }
+
+}
+

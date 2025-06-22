@@ -1,0 +1,26 @@
+.custom-card-style{
+  width: 100%;
+  height: 220px;
+  background-color: rgb(236,248,254);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: block;
+  .body-style{
+      display: grid;
+      justify-content: center;
+  }
+  .fontStyle{
+      font-size: 19px;
+      color: rgb(2, 165, 233);
+      font-weight: bold;
+      padding-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-card-style{
+    height: 180px;
+  }
+}
+
+

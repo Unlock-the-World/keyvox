@@ -1,0 +1,102 @@
+// styles.scss
+
+.containerStyle  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  .boxStyle  {
+    position: relative;
+    width: 60%;
+    height: 250px;
+    padding: 20px;
+    border: 1px solid white;
+    text-align: center;
+  };
+  .qrCodeStyle  {
+    width: '50%',
+  };
+  .textLineStyle{
+    position: 'absolute';
+    transform: 'translate(-50%, -50%)';
+    font-size: 18px;
+    top: 20%;
+    left: 20%
+  };
+};
+
+.span_color{
+  color: white;
+}
+
+
+// styles.scss
+
+.headerSection {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  // margin-left: 35%;
+
+  .logo {
+    width: 200px;
+    // height: 70px;
+  }
+
+  .text {
+    margin-left: 8px;
+    font-size: 70px;
+    color: white;
+    margin-bottom:10px;
+  }
+
+}
+
+.text1 {
+  display: flex;
+  justify-content: center;
+  margin-left: 8px;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.buttonStyle{
+  margin-right: 100px;
+  width: 300px;
+}
+
+.blurQr{
+  filter: blur(5px);
+}
+.cleanQr{
+  filter: none;
+}
+
+.pin-code{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+}
+.box-name{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+.payStyle{
+  margin-top: 20%;
+}
+@media (max-width: 600px) {  
+  .headerSection {  
+      margin-left: 0;  
+  }  
+  .buttonStyle{
+    width: 150px;
+    margin-right: 10px;
+  }
+  .payStyle{
+    margin-top: 150%;
+    margin-left: -100%;
+  }
+}

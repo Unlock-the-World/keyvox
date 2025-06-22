@@ -1,0 +1,55 @@
+// styles.scss
+.pageStyle{
+  background-color:rgb(var(--primary-rgb));
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bodyStyle{
+  display: flex;
+  justify-content: left;
+  padding-top: 30px;
+  margin-left: 35%;
+  padding-left: 0px;
+  .img{
+    width: 200px;
+  }
+}
+
+.mainStyle{
+  display: flex;
+  height: 93%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardStyle{
+  margin-top: 3%;
+  border-radius: 30px 30px 0 0 ;
+}
+
+.innerCardStyle{
+  display: flex;
+  justify-content: center;
+}
+
+.iconStyle{
+  font-size: 40px;
+  text-align: center;
+  color: rgb(var(--primary-rgb));
+}
+
+
+@media (max-width: 600px) {  
+  .bodyStyle {  
+      margin-left: 0%;
+      padding-left: 20px;  
+  }  
+  .cardStyle{
+      width: 100%;
+  }
+  .mainStyle{
+    height: 100%;
+  }
+}
