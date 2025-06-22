@@ -1,94 +1,128 @@
-This is a [Next.js](https://nextjs.org/) project for KEYVOX locker. 
-You can use this template as a basis for building your locker project. 
-To get started, follow these steps:
+# 🔐 KEYVOX Locker Demo (Next.js)
 
-## prepare work
-1: Open the .env.development file and update several variables to your own. 
-    The specific method for obtaining these variables is as follows.
-    ![Alt text](image-1.png)
-
-  
-2: To obtain these values, purchase a Keyvox lock, visit the [https://eco.blockchainlock.io/bacs-web] page,click on the profile icon in the upper right corner, then navigate to the "Developers" section, then go to the API page to retrieve the **API_KEY** and  **API_SECRET**. 
-    Replace the obtained values with the corresponding variables in the environment file.
+これは、**KEYVOXロッカーシステム**の構築に使える [Next.js](https://nextjs.org/) ベースのテンプレートプロジェクトです。  
+自社のロッカーサービスを素早く立ち上げたい方のための、**スタートキット**です。
     ![Alt text](image.png)
+    
+> This is a [Next.js](https://nextjs.org/) based template project for building a **KEYVOX Locker System**.  
+> Use this as a starter kit to quickly launch your own locker service.
 
-3:  Configure the database on your own by updating the following content:   **DB_HOST,DB_USER,DB_PWD,DB_NAME,DB_PORT**
- 
-4:  Define Prices for Different Box Sizes (Displayed on the Showcase Page for Customer Reference):
+---
 
-5:  Register an Account on Stripe [https://dashboard.stripe.com/test/dashboard] for Payment Collection. 
-    Simultaneously, Define Prices for Different Box Sizes and Obtain Corresponding Product IDs. ID seems like **price_xxxxxxxxxxxxx**.
-    Stripe Internally Calculates the Price Using the Product ID to Display the Amount Customers Should Pay (Used for Actual Payment).  
-    Vist [https://stripe.com/docs/checkout/embedded/quickstart?client=next] get your own **stripe_public_key** and **stripe_secret_key**.
+## ✅ セットアップ手順 / Setup Instructions
+
+### 1. 環境変数（`.env.development`）の準備  
+### 1. Prepare `.env.development`
+
+`.env.development` を開き、以下の値を設定してください。  
+Open `.env.development` and set the following values:
+
+#### 🔑 KEYVOX APIキーの取得 / Get KEYVOX API Keys
+
+1. [https://eco.blockchainlock.io/bacs-web](https://eco.blockchainlock.io/bacs-web) にアクセス  
+2. 右上のプロフィール → 「Developers」→「API」ページを開く  
+3. `API_KEY` と `API_SECRET` を取得し `.env` に記載  
+※KEYVOXのスマートロッカーの購入が必要です。
+
+> 1. Visit [https://eco.blockchainlock.io/bacs-web](https://eco.blockchainlock.io/bacs-web)  
+> 2. Click profile icon → "Developers" → "API" section  
+> 3. Retrieve `API_KEY` and `API_SECRET`, and add them to `.env`  
+> ※ You need a KEYVOX smart lock to access this feature.
+
+---
+
+### 2. データベースの設定 / Database Configuration
+
+自分のMySQL環境に合わせて、以下を `.env` に記載：  
+Set your MySQL credentials in `.env`:
+
+```env
+DB_HOST=
+DB_USER=
+DB_PWD=
+DB_NAME=
+DB_PORT=
+```
+
+### 3. Stripe（決済）の設定 / Stripe Payment Setup
+Stripeのテストダッシュボードに登録：Stripe Dashboard
+
+価格別に Product ID（例：price_xxxxxxx）を作成
     ![Alt text](image-4.png)
     ![Alt text](image-3.png)
     ![Alt text](image-2.png)
-
-6:  In the [next.config.ts] file, the value for **googleKey**, defined, which is used for robot verification on the login page. 
-    You can generate your own  Google Key by following the instructions at [https://developers.google.com/recaptcha/docs/v3].
     ![Alt text](image-5.png)
 
+取得したキーを .env に記載：
 
+```env
+STRIPE_PUBLIC_KEY=
+STRIPE_SECRET_KEY=
+```
+See Stripe Embedded Checkout Quickstart for integration.
 
-## install dependencies
- ```bash
-yarn insatll
-or
-npm  install
+### 4. Google reCAPTCHA 設定 / reCAPTCHA Setup
+Google reCAPTCHA v3 を使ってBot対策をします。
+生成したキーを next.config.ts に設定してください。
+
+Use reCAPTCHA v3 for bot protection on login. Add your keys to next.config.ts.
+
+## 📦 依存関係のインストール / Install Dependencies
+```
+yarn install
+# or
+npm install
 ```
 
-## getting start   (this version read your [.env.development] file)
-```bash
+## ▶️ 開発サーバー起動 / Start Dev Server
+```
 yarn dev
-or
-npm run dev    
+# or
+npm run dev
+.env.development を読み込みます。
 ```
+Uses .env.development
 
-## project bundling
-```bash
+## 📦 本番ビルド / Build for Production
+```
 yarn build
-or
+# or
 npm run build
 ```
 
-## run bundling version  (this version read your [.env.production] file)
-```bash
-yarn start
-or
-npm run start   
+## 🚀 本番モード起動 / Start Production Server
 ```
+yarn start
+# or
+npm run start
+.env.production を読み込みます。
+```
+Uses .env.production
 
+## 📁 ディレクトリ構成 / Project Directory Structure
+ディレクトリ	説明 / Description
+.next/	ビルド結果 / Build output
+node_modules/	パッケージ / Installed packages
+public/	静的ファイル / Static assets
+src/	ソースコード / Source code
+├ assets/images/	画像 / Images
+├ client/	API呼び出し定義 / API client logic
+├ components/	再利用UI部品 / Reusable components
+├ locales/	多言語設定 / i18n translations
+├ pages/	ページとルーティング / Pages and routing
+├ server/	サーバー側処理 / Server-side APIs
+├ types/	型定義 / Type definitions
+└ utils/	ユーティリティ関数 / Utility functions
+next.config.js	Next.js 設定 / Next.js config
+tsconfig.json	TypeScript 設定 / TypeScript config
 
-## Project Directory Structure
+## 🛠 技術スタック / Tech Stack
+項目 / Feature	使用技術 / Technology
+フロントエンド / Frontend	Next.js, React, TypeScript
+バックエンド / Backend	Next.js API Routes (一部 Java)
+データベース / Database	MySQL
+決済 / Payment	Stripe
+Bot対策 / Bot Protection	Google reCAPTCHA v3
 
-1. **[.next]:** This directory contains the built pages and other assets after the build process.
-
-2. **[node_modules]:** Dependencies installed using **yarn install** are displayed here.
-
-3. **[public]:** Static resources stored in this directory will be directly copied to the build output directory.
-
-4. **[src]:** This directory is typically used to store the application's source code, including components, utility functions, etc.
-    4.1 **[assets/images]:** This folder holds images used in the program.
-    4.2 **[client]:** Defines the logic for API interfaces, such as input parameters and API response formats.
-    4.3 **[components]:** This folder contains reusable components that can be imported and used by different pages.
-    4.4 **[locales]:** Configuration for multilingual support, including translation files.
-    4.5 **[pages]:** One of the most important directories in Next.js. Each file in this directory maps to a corresponding route.
-    4.6 **[server]:** If APIs are called from the server backend instead of the client, definitions are placed here.
-    4.7 **[types]:** This folder defines various types used for API response types.
-    4.8 **[utils]:** Contains utility classes used throughout the program, such as login status verification.
-
-5. **[next.config.js]:** Next.js configuration file for build and webpack configurations.
-
-6. **[tsconfig.json]:** TypeScript configuration file.
-
-
-
-## Project Tech Stack Overview
-
-This project is built on the Next.js framework, predominantly utilizing React and TypeScript for frontend development.
-The backend logic is largely handled through Next.js API routes, eliminating the need for a standalone backend language. 
-A small portion of the backend logic is implemented using Java.
-
-MySQL is employed as the database to store information related to user locker rentals. 
-
-This program follows the MIT License.
+## 📄 ライセンス / License
+MIT License
