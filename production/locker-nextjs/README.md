@@ -108,37 +108,24 @@ npm run start
 Uses .env.production
 
 ## 📁 ディレクトリ構成 / Project Directory Structure
+## 📁 ディレクトリ構成 / Project Directory Structure
 
-ディレクトリ
-説明 / Description
-.next/
-ビルド結果 / Build output
-node_modules/
-パッケージ / Installed packages
-public/
-静的ファイル / Static assets
-src/
-ソースコード / Source code
-├ assets/images/
-画像 / Images
-├ client/
-API呼び出し定義 / API client logic
-├ components/
-再利用UI部品 / Reusable components
-├ locales/
-多言語設定 / i18n translations
-├ pages/
-ページとルーティング / Pages and routing
-├ server/
-サーバー側処理 / Server-side APIs
-├ types/
-型定義 / Type definitions
-└ utils/
-ユーティリティ関数 / Utility functions
-next.config.js
-Next.js 設定 / Next.js config
-tsconfig.json
-TypeScript 設定 / TypeScript config
+| ディレクトリ / Directory      | 説明 / Description                          |
+|------------------------------|--------------------------------------------|
+| `.next/`                     | ビルド結果 / Build output                  |
+| `node_modules/`              | パッケージ / Installed packages            |
+| `public/`                    | 静的ファイル / Static assets               |
+| `src/`                       | ソースコード / Source code                 |
+| ├─ `assets/images/`          | 画像 / Images                              |
+| ├─ `client/`                 | API呼び出し定義 / API client logic         |
+| ├─ `components/`             | 再利用UI部品 / Reusable components         |
+| ├─ `locales/`                | 多言語設定 / i18n translations             |
+| ├─ `pages/`                  | ページとルーティング / Pages and routing   |
+| ├─ `server/`                 | サーバー側処理 / Server-side APIs         |
+| ├─ `types/`                  | 型定義 / Type definitions                  |
+| └─ `utils/`                  | ユーティリティ関数 / Utility functions     |
+| `next.config.js`             | Next.js 設定 / Next.js config              |
+| `tsconfig.json`              | TypeScript 設定 / TypeScript config        |
 
 
 ## 🛠 技術スタック / Tech Stack
