@@ -79,6 +79,7 @@ LOCK_ID=your_lock_id_here
 
 🔍 補足：.env.example をコピーして .env を作成する場合は以下のコマンドを実行してください
 cp .env.example .env
+
 ---
 
 ## オフィシャルリソース
