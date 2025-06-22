@@ -15,8 +15,8 @@ export enum StoreKey {
 export enum Api {
   API_BASE_URL= "https://eco.blockchainlock.io",
   API_PATH = "/api/eagle-pms/v1",
-  API_KEY="***REMOVED***",
-  API_SECRET="***REMOVED***",
+  API_KEY = process.env.API_KEY,
+  API_SECRET = process.env.API_SECRET,
   API_VERIFY= `/account/user/vcodeByPhone`,
 
   API_GET_UNITS="getUnits",
