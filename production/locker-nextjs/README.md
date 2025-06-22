@@ -108,7 +108,6 @@ npm run start
 Uses .env.production
 
 ## 📁 ディレクトリ構成 / Project Directory Structure
-## 📁 ディレクトリ構成 / Project Directory Structure
 
 | ディレクトリ / Directory      | 説明 / Description                          |
 |------------------------------|--------------------------------------------|
@@ -129,12 +128,15 @@ Uses .env.production
 
 
 ## 🛠 技術スタック / Tech Stack
-項目 / Feature	使用技術 / Technology
-フロントエンド / Frontend	Next.js, React, TypeScript
-バックエンド / Backend	Next.js API Routes (一部 Java)
-データベース / Database	MySQL
-決済 / Payment	Stripe
-Bot対策 / Bot Protection	Google reCAPTCHA v3
+
+| 項目 / Feature           | 使用技術 / Technology                  |
+|--------------------------|-----------------------------------------|
+| フロントエンド / Frontend | Next.js, React, TypeScript             |
+| バックエンド / Backend   | Next.js API Routes（部分的に Java）   |
+| データベース / Database  | MySQL                                  |
+| 決済 / Payment           | Stripe                                 |
+| Bot対策 / Bot Protection | Google reCAPTCHA v3                    |
 
 ## 📄 ライセンス / License
+
 MIT License
