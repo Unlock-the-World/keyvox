@@ -1,8 +1,16 @@
 # 🔐 KEYVOX Locker Demo (Next.js)
 
 これは、**KEYVOXロッカーシステム**の構築に使える [Next.js](https://nextjs.org/) ベースのテンプレートプロジェクトです。  
-自社のロッカーサービスを素早く立ち上げたい方のための、**スタートキット**です。
-    ![Alt text](image.png)
+自社のコインロッカーサービスを素早く立ち上げたい方のための、**スタートキット**です。
+
+***KEYVOX Smart Locker***
+https://locker.keyvox.co
+
+***APIドキュメント***
+https://developers.keyvox.co
+
+***KEVOX Locker API Key取得方法：***
+https://keyvox.notion.site/API-44c489d8c97a4eba8a7fa0028c3b39a1?source=copy_link
     
 > This is a [Next.js](https://nextjs.org/) based template project for building a **KEYVOX Locker System**.  
 > Use this as a starter kit to quickly launch your own locker service.
