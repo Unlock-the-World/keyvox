@@ -7,7 +7,19 @@
 👉 Node.js (Replit, Railway, Vercel)  
 👉 クライアント・サーバー問わず、柔軟な構成で導入可能です。
 
-> 🔧 本リポジトリは、開発者でありKEYVOX創業者である岡本氏による個人プロジェクトを起源とし、現在はUnlock-the-World Organizationの公式リポジトリとして公開・保守されています。
+## 📋 Table of Contents
+- [概要](#概要)
+- [対応環境](#対応環境)
+- [セットアップ](#セットアップ)
+- [クイックスタート](#クイックスタート)
+- [リソース](#リソース)
+- [Contributing](#contributing)
+- [License](#license)
+
+## 概要
+KEYVOX は QRコードによるスマートロックアクセス制御を提供する強力なプラットフォームです。
+このリポジトリは公式のサンプルコード集として、GAS・Node.js・Replit・Railway・Vercel に対応しています。
+ 本リポジトリは、開発者でありKEYVOX創業者である岡本氏による個人プロジェクトを起源とし、現在はUnlock-the-World　KEYVOXの公式リポジトリとして公開・保守されています。
 
 ---
 
@@ -54,9 +66,10 @@ QRコードでスマートにアクセス。鍵のUXを極限まで高めたス�
 ### 🔧 B. Replit / Railway / Vercel（Node.js）
 
 1. `.env` ファイルを作成し、以下を定義：
-KEYVOX_API_KEY=…
-KEYVOX_SECRET=…
-LOCK_ID=…
+```env
+KEYVOX_API_KEY=your_api_key_here
+KEYVOX_SECRET=your_secret_key_here
+LOCK_ID=your_lock_id_here
 
 2. `npm install` で依存をインストール  
 3. `node index.js` または `vercel dev`, `railway run` で起動  
