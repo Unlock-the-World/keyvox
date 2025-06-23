@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "21d0b99a-7336-42a0-80b8-5d300f55cded",
+		"name": "BCL20230207",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11389845"
+	},
+	"item": [
+		{
+			"name": "01_api/eagle-pms/v1/getUnits",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"getUnits\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest",
+							"const postParam = '{}';",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_api/eagle-pms/v1/createLockPin",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"createLockPin\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest生成",
+							"const postParam = '{\"unitId\":\"5e901978ef16f912aa9aaaa7\",\"sTime\":\"1675734300\",\"eTime\":\"1675820700\",\"targetName\":\"BCL20230207\"}'; ",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature生成",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05_api/eagle-pms/v1/getLockPinStatus",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"getLockPinStatus\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest生成",
+							"const postParam = '{\"pinId\":\"6051caf90d26a97c6aa1ca48\"}'; ",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature生成",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06_api/eagle-pms/v1/getLockPinList",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"getLockPinList\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest生成",
+							"const postParam = '{\"lockId\":\"000D6F0013112273\"}';",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature生成",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07_api/eagle-pms/v1/getLockStatus",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"getLockStatus\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest生成",
+							"const postParam = '{\"lockId\":\"000D6F11134E5DA7\"}';//lockIdはgetUnitsから取得するもの",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature生成",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}?lockId=555BF973335E616F",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					],
+					"query": [
+						{
+							"key": "lockId",
+							"value": "555BF973335E616F"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09_api/eagle-pms/v1/unlock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiName = \"unlock\"",
+							"const apiKey = \"xxxxxxxxxxxxxxxxxx\";//自分のAPI キー",
+							"const secret = \"xxxxxxxxxxxxxxxxxxxxxx\";//自分のシークレットキー",
+							"const crypto = require('crypto-js');",
+							"const d = new Date();",
+							"const date = d.toUTCString();",
+							"const requestLine = \"\\nPOST /api/eagle-pms/v1/\" + apiName +\" HTTP/1.1\";",
+							"",
+							"//digest生成",
+							"const postParam = '{\"lockId\":\"000D6F0013112273\",\"flag\":\"0\"}'; //0 -> lock, 1 -> unlock",
+							"const digestHash = () => {",
+							"    const paramHash = crypto.SHA256(postParam);",
+							"    return crypto.enc.Base64.stringify(paramHash);",
+							"};",
+							"const digest = \"SHA-256=\" + digestHash().toString();",
+							"",
+							"const stringToSign = String(\"date: \" + date + requestLine + \"\\ndigest: \" + digest);",
+							"",
+							"//signature生成",
+							"const signToken = () => {",
+							"    const hash = crypto.HmacSHA256(stringToSign, secret);",
+							"    return crypto.enc.Base64.stringify(hash);",
+							"};",
+							"const signature = signToken().toString();",
+							"",
+							"//コレクション変数へ",
+							"pm.collectionVariables.set(\"api\", apiName);",
+							"pm.collectionVariables.set(\"key\", apiKey);",
+							"pm.collectionVariables.set(\"signature\", signature);",
+							"pm.collectionVariables.set(\"date\", date);",
+							"pm.collectionVariables.set(\"digest\", digest);",
+							"pm.collectionVariables.set(\"body\", postParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				},
+				"followRedirects": false,
+				"strictSSL": true,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false,
+				"disableUrlEncoding": true,
+				"tlsPreferServerCiphers": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "date",
+						"value": "{{date}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "hmac username=\"{{key}}\", algorithm=\"hmac-sha256\", headers=\"date request-line digest\", signature=\"{{signature}}\"",
+						"type": "text"
+					},
+					{
+						"key": "x-target-host",
+						"value": "default.pms",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "{{digest}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eco.blockchainlock.io/api/eagle-pms/v1/{{api}}",
+					"protocol": "https",
+					"host": [
+						"eco",
+						"blockchainlock",
+						"io"
+					],
+					"path": [
+						"api",
+						"eagle-pms",
+						"v1",
+						"{{api}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": ""
+		},
+		{
+			"key": "key",
+			"value": ""
+		},
+		{
+			"key": "signature",
+			"value": ""
+		},
+		{
+			"key": "date",
+			"value": ""
+		},
+		{
+			"key": "digest",
+			"value": ""
+		},
+		{
+			"key": "body",
+			"value": ""
+		}
+	]
+}
