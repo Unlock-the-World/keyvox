@@ -11,7 +11,7 @@
 KEYVOXクラウドから送信される予約情報Webhook通知（チェックイン、チェックアウト）をトリガーとして、室内の電源をM5Stackで自動制御します。Google App Script (GAS)とArduinoスケッチで構成されます。
 
 動作デモ動画
-[https://youtube.com/shorts/HPcVL9-vbYA/0.jpg](https://youtube.com/shorts/HPcVL9-vbYA?feature=share)
+[(https://img.youtube.com/shorts/HPcVL9-vbYA/0.jpg)](https://youtube.com/shorts/HPcVL9-vbYA?feature=share)
 
 ---
 
