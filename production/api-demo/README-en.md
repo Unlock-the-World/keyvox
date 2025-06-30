@@ -14,6 +14,7 @@ https://keyvox.notion.site/API-44c489d8c97a4eba8a7fa0028c3b39a1?source=copy_link
 - [Java](#java)
 - [PHP](#php)
 - [JS(Postman)](#jspostman)
+- [Python](#python)
 
 ## Java
 
@@ -183,6 +184,15 @@ If successful, the response from the API server will be displayed in the respons
     ]
 }
 ```
+
+## Python
+
+### How to Use
+
+1.  Replace the apiKey and secret in the script with your own credentials.
+2.  Several API methods are provided in the KeyvoxApiClient class. Add new methods as needed.
+3.  In the main block (if __name__ == "__main__":), execute your desired API method with the appropriate input parameters.
+4.  Upon successful execution, the response from the API server will be printed.
 
 ## 📄 License
 

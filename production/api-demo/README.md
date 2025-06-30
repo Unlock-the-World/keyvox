@@ -14,6 +14,7 @@ https://keyvox.notion.site/API-44c489d8c97a4eba8a7fa0028c3b39a1?source=copy_link
 - [Java](#java)
 - [PHP](#php)
 - [JS(Postman)](#jspostman)
+- [Python](#python)
 
 ## Java
 
@@ -27,14 +28,6 @@ https://keyvox.notion.site/API-44c489d8c97a4eba8a7fa0028c3b39a1?source=copy_link
   - `main`メソッドを実行するだけで、定義された全てのテストを一括で実行できます。
 - **Mavenによる簡単なセットアップ**:
   - `pom.xml`に必要なライブラリが定義されており、依存関係の解決を自動で行います。
-
-### 前提条件
-
-このプロジェクトを実行するには、以下が必要です。
-
-- **JDK (Java Development Kit)**: バージョン8以上
-- **Apache Maven**: ビルドおよび依存関係の管理に使用します。
-- **APIキー & シークレット**: KEYVOX APIのAPIキーとシークレットキー
 
 ### セットアップ手順
 
@@ -98,14 +91,6 @@ public static void main(String[] args) {
 
 ## PHP
 
-### 前提条件
-
-このスクリプトを実行するには、以下の環境が必要です。
-
-- **PHP**: バージョン 7.4 以上を推奨
-- **Composer**: PHPのパッケージ管理ツール（`Requests for PHP`ライブラリのインストールに使用）
-- **APIキー & シークレット**: KEYVOX APIのAPIキーとシークレットキー
-
 ### セットアップ手順
 
 1.  **依存ライブラリのインストール**
@@ -157,13 +142,6 @@ php api_test.php
 
 ## JS(Postman)
 
-### 前提条件
-
-このコレクションを利用するには、以下の環境が必要です。
-
-- **Postman デスクトップアプリ**: [公式サイトからダウンロード](https://www.postman.com/downloads/)してインストールしてください。
-- **APIキー & シークレット**: KEYVOX APIのAPIキーとシークレットキー
-
 ### 利用手順
 
 1.  スクリプト内の各リクエストのapiKeyとsecretを自分のものに書き換えてください
@@ -183,6 +161,15 @@ php api_test.php
     ]
 }
 ```
+
+## Python
+
+### 利用手順
+
+1.  スクリプト内のapiKeyとsecretを自分のものに書き換えてください
+2.  KeyvoxApiClientクラスにいくつかのAPIメソッドが用意されています。必要に応じて新しいAPIメソッドを追記してください
+3.  メインブロック(if __name__ == "__main__":)で適切なインプットパラメータを指定して任意のAPIメソッドを実行してください
+4.  実行に成功すると、APIサーバーからの結果が出力されます。
 
 ## 📄 ライセンス / License
 
