@@ -144,3 +144,7 @@ function getListOfLocks() {
   }
 }
 ```
+
+## 📄 License
+
+MIT License

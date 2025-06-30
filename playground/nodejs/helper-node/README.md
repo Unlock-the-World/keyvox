@@ -160,3 +160,7 @@ async function getListOfLocks() {
   console.log('Lock List:', JSON.parse(responseText));
 }
 ```
+
+## 📄 ライセンス
+
+MIT License
