@@ -1,6 +1,6 @@
 # 🔐 KEYVOX API Demo
 
-これは、**KEYVOX API## のサンプルソースです。
+これは、**KEYVOX API** のサンプルソースです。
 APIが要求するHMAC-SHA256方式の認証署名を生成し、実際に各種APIエンドポイント（ユニット情報の取得、暗証番号の作成・変更など）を呼び出す方法を示します。
 Java、 PHP、JS(Postman用)を提供しています。
 
