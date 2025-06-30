@@ -10,7 +10,10 @@ https://developers.keyvox.co
 ***How to obtain a KEYVOX API Key:***
 https://keyvox.notion.site/API-44c489d8c97a4eba8a7fa0028c3b39a1?source=copy_link
 
----
+## Table of Contents
+- [Java](#java)
+- [PHP](#php)
+- [JS(Postman)](#jspostman)
 
 ## Java
 
