@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント連携 - KEYVOX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .auth-container {
+            max-width: 400px;
+            width: 100%;
+            margin-top: 5vh;
+        }
+        /* ちょっとした背景のアクセント */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 175, 236, 0.1), transparent 70%);
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1), transparent 70%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col items-center p-4 min-h-screen">
+
+    <div class="auth-container">
+        <!-- KEYVOX Logo -->
+        <div class="text-center mb-6">
+             <svg class="w-16 h-16 mx-auto text-primary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.293 6.293-1.414-1.414L12 9.172 9.121 6.293l-1.414 1.414L10.828 10l-2.121 2.121 1.414 1.414L12 12.828l2.879 2.879 1.414-1.414L13.172 10l3.121-3.121z"/>
+            </svg>
+        </div>
+
+        <!-- Main Auth Card -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl w-full">
+            
+            <!-- Default Confirmation View -->
+            <div id="confirm-view" class="text-center">
+                <h1 id="auth-title" class="text-2xl font-bold text-gray-800 mb-2">Googleで続行</h1>
+                <p class="text-gray-500 mb-6">以下のアカウントでKEYVOXに接続します。</p>
+
+                <div class="flex items-center space-x-4 p-4 border rounded-lg mb-6">
+                    <img id="user-avatar" src="https://placehold.co/64x64/E2E8F0/4A5568?text=K" alt="User Avatar" class="w-12 h-12 rounded-full">
+                    <div class="text-left">
+                        <div id="user-name" class="font-bold text-gray-800">Taro Keyvox</div>
+                        <div id="user-email" class="text-sm text-gray-500">taro.keyvox@example.com</div>
+                    </div>
+                </div>
+
+                <button id="confirm-button" class="w-full bg-gray-800 text-white font-bold py-3 px-4 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                    Taro Keyvoxとして続行
+                </button>
+
+                <div class="mt-4">
+                    <a id="cancel-link" href="step2-free.html" class="text-sm text-gray-500 hover:underline">キャンセル</a>
+                </div>
+            </div>
+
+            <!-- Error View (Email Already Exists) -->
+            <div id="error-view" class="hidden text-center">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">アカウントは登録済みです</h1>
+                <p class="text-gray-600 mb-6">
+                    <strong id="error-email" class="font-medium text-gray-800">taro.keyvox@example.com</strong> は既にKEYVOXアカウントに紐付いています。
+                </p>
+                <p class="text-gray-600 mb-6">
+                    パスワードを使ってログインするか、別のアカウントで連携してください。
+                </p>
+                <a id="go-to-login-link" href="step2-free.html" class="w-full block bg-gray-800 text-white font-bold py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300">
+                    ログインページに戻る
+                </a>
+            </div>
+
+        </div>
+
+        <footer class="text-center mt-6 text-xs text-gray-400">
+            <p>KEYVOXの<a href="#" class="underline">利用規約</a>と<a href="#" class="underline">プライバシーポリシー</a>に同意して続行します。</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const provider = params.get('provider') || 'google'; // 'google' or 'apple'
+            const fromPage = params.get('from') || 'step2-free.html';
+            
+            // --- Elements ---
+            const authTitle = document.getElementById('auth-title');
+            const userAvatar = document.getElementById('user-avatar');
+            const confirmButton = document.getElementById('confirm-button');
+            const cancelLink = document.getElementById('cancel-link');
+            const goToLoginLink = document.getElementById('go-to-login-link');
+            const confirmView = document.getElementById('confirm-view');
+            const errorView = document.getElementById('error-view');
+
+            // --- Mock Data ---
+            const mockUsers = {
+                google: { name: 'Taro Keyvox', email: 'taro.keyvox@example.com', avatar: 'https://placehold.co/64x64/E2E8F0/4A5568?text=T' },
+                apple: { name: 'Hanako Apple', email: 'hanako.apple@privaterelay.appleid.com', avatar: 'https://placehold.co/64x64/E2E8F0/4A5568?text=H' }
+            };
+            const currentUser = mockUsers[provider];
+
+            // --- Dynamic Content Setup ---
+            if (authTitle) authTitle.textContent = provider === 'google' ? 'Googleで続行' : 'Appleで続行';
+            if (userAvatar) userAvatar.src = currentUser.avatar;
+            if (confirmButton) confirmButton.textContent = `${currentUser.name}として続行`;
+            if (cancelLink) cancelLink.href = fromPage;
+            if (goToLoginLink) goToLoginLink.href = fromPage;
+            document.getElementById('user-name').textContent = currentUser.name;
+            document.getElementById('user-email').textContent = currentUser.email;
+            document.getElementById('error-email').textContent = currentUser.email;
+
+
+            // --- Mock Logic: Simulate API call and handle response ---
+            confirmButton.addEventListener('click', () => {
+                // ここでバックエンドにソーシャルトークンを送信して検証する想定
+                console.log(`Simulating authentication with ${provider}...`);
+                
+                // シミュレーション: Googleアカウントは常に登録済みエラーを返す
+                const isEmailRegistered = (provider === 'google');
+
+                if (isEmailRegistered) {
+                    // Show error view
+                    confirmView.classList.add('hidden');
+                    errorView.classList.remove('hidden');
+                } else {
+                    // Success: Redirect to the next step
+                    // 実際の遷移先は前のページに応じて変更可能
+                    const nextStep = fromPage.includes('free') ? 'step4-free.html' : 'step3.html';
+                    window.location.href = nextStep;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
