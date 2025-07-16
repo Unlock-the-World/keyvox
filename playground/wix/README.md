@@ -12,8 +12,7 @@
 ## 📁 ファイル構成
 ```
 .
-├── backend/   
-│   └── keyvox.jsw        // メインの発行処理ロジック   
+├── booking    // メインの発行処理ロジック   
 ├── README.md             // このファイル  
 ```
 
@@ -25,7 +24,6 @@
 |------------------------|-----------------------------|
 | `KEYVOX_API_KEY`       | 発行済みのAPIキー           |
 | `KEYVOX_SECRET_KEY`    | 対応するシークレットキー    |
-| `KEYVOX_API_URL`       | APIベースURL（例：https://it-eco.blockchainlock.io）|
 
 > 💡 `getSecret()` で各値を取得しています。直接コードにハードコーディングしないでください。
 
