@@ -169,7 +169,7 @@ hmac username="<API_KEY>", algorithm="hmac-sha256", headers="date request-line d
 ## ✅ KEYVOX APIリクエスト構造
 送信先：
 ```
-POST https://it-eco.blockchainlock.io/api/eagle-pms/v1/issueLockKey
+POST https://eco.blockchainlock.io/api/eagle-pms/v1/issueLockKey
 ```
 ボディ例：
 ```json
