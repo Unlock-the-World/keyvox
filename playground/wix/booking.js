@@ -5,7 +5,7 @@ import crypto from 'crypto';
 //  API設定
 const UNIT_ID = "YOUR_UNITID"; //KEYVOX管理画面上で、ロックが結びついたドアのunitidを取得してください
 const API_NAME = "issueLockKey";
-const API_HOST = "it-eco.blockchainlock.io";
+const API_HOST = "eco.blockchainlock.io";
 const API_PATH = `/api/eagle-pms/v1/${API_NAME}`;
 
 /**
