@@ -29,7 +29,7 @@
 > 
 > 💡 unitidは直接コードに挿入する設計になっています。KEYVOX管理画面でロックが結びついた当該ドアのunitidを取得し、入力してください。
 
-### 2. invoke関数を Wix オートメーションまたは HTTP Functions から呼び出し
+### 2. invoke関数を Wix オートメーションから呼び出し
 
 ```javascript
 import { invoke } from 'backend/keyvox.jsw';
