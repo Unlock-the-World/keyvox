@@ -1,10 +1,10 @@
 # 🔐 KEYVOX issueLockKey Automation (Wix Velo Integration)
 
-このリポジトリは、**Wix Velo** で動作するバックエンドスクリプトです。予約データを受け取り、[KEYVOX API](https://keyvox.jp) の `issueLockKey` を実行して、指定期間に対応するスマートロックのPINやQRを発行します。
+このリポジトリは、**Wix Velo** で動作するバックエンドスクリプトです。予約データを受け取り、[KEYVOX API](https://developers.keyvox.co/) の `issueLockKey` を実行して、指定期間に対応するスマートロックのPINやQRを発行します。
 
 ## 🧩 主な機能
 
-- Wix Bookingアプリで作成したサービスに予約が入ると、予約情報をペイロードで取得する
+- Wix Bookingアプリで作成したサービスに予約が入るのをトリガーとし、その予約情報をペイロードで取得する
 - 顧客情報と予約時間からスマートロック発行リクエストを自動送信
 - HMAC-SHA256による署名生成と認証
 - KEYVOXのPIN/QRの自動メール送信にも対応（通知設定済みのユニット）
