@@ -43,7 +43,7 @@ export function myFunction(payload) {
 
 以下のようなペイロード形式を想定しています（一部省略）：
 
-```json
+```jS
 {
   "payload": {
     "start_date": "2025-08-01T10:00:00+09:00",
