@@ -48,7 +48,7 @@ export function myFunction(payload) {
   "payload": {
     "start_date": "2025-08-01T10:00:00+09:00",
     "end_date": "2025-08-01T11:00:00+09:00",
-    "staff_member_name": "string",　//この情報をKEVYOXの部屋とマッピングします
+    "staff_member_name": "string", //この情報をKEVYOXの部屋とマッピングします
     "contact": {
       "name": {
         "first": "太郎",
